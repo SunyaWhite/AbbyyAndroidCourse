@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import androidx.cardview.widget.CardView
 import java.lang.Exception
 
@@ -12,7 +13,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        findViewById<CardView>(R.id.note).setOnClickListener {v: View? -> onClick(v) }
+        //findViewById<CardView>(R.id.note).setOnClickListener {v: View? -> onClick(v) }
+        findViewById<Button>(R.id.buttonMain).setOnClickListener { v: View? -> onClick(v) }
     }
 
     private fun onClick(view : View?){
@@ -20,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         when(view?.id)
         {
             R.id.note -> intent = Intent(this, ShowNoteActivity::class.java)
+            R.id.buttonMain -> intent = Intent(this, NoteRecycleView :: class.java)
             else -> throw Exception("No view was found")
         }
         //error("Button clicked")

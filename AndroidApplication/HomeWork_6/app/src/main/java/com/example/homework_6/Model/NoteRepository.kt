@@ -1,26 +1,44 @@
 package com.example.homework_6.Model
 
 import android.content.Context
-
-import java.io.File
+import com.example.homework_6.R
 import java.util.*
+import kotlin.random.Random
 
-object NoteRepository{
+class NoteRepository(context: Context) {
 
-    private fun generateRandomDate() : Date {
-        var random = Random()
-        return Date(2000 + random.nextInt(20), 1 +  random.nextInt(11), 1 + random.nextInt(29))
+    private var _notes : MutableList<Note> = mutableListOf()
+
+    init {
+
+        var elems = context.assets.open("notes.txt")
+            .bufferedReader()
+            .readText().split("\n\n")
+            .fold(0L) { acc, s ->
+                if(s == "")
+                    acc
+                _notes.add(Note(acc, generateRandomDate(), s, selectDrawable( acc % 4 + 1)))
+                acc + 1
+            }
+        /*_notes.add(Note(1, generateRandomDate(), "Some random text", 1))
+        _notes.add(Note(2, generateRandomDate(), "Some random text 2", 1))*/
     }
 
-    public var notesList : MutableCollection<Note> = mutableListOf<Note>()
+    private fun generateRandomDate() : Date=
+        Date(Random.nextInt(2000, 2020), Random.nextInt(1, 13), Random.nextInt(1, 30))
 
-    // side effect function
-    public fun Initialize ()
-            = File("notes.txt")
-            .bufferedReader()
-            .readLines()
-            .fold(0L, {acc, noteText ->
-                notesList.add(Note(acc, generateRandomDate(), noteText, 1)); return acc + 1})
+    private fun selectDrawable(id : Long) =
+        when(id)
+        {
+            1L -> R.drawable.cat1
+            2L -> R.drawable.cat2
+            3L -> R.drawable.cat3
+            4L -> R.drawable.cat4
+            else -> R.drawable.ic_launcher_foreground
+        }
 
-    public fun getNoteById(id : Long) = notesList.firstOrNull { note -> note.id == id }
+    public fun getAllNotes() = _notes.toList()
+
+    public fun getNoteById(id : Long) : Note = _notes.first { note -> note.id == id }
+
 }
