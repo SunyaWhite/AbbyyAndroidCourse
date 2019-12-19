@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/abbyy_android.iml" filepath="$PROJECT_DIR$/abbyy_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/abbyy_android_JAVA_KOTLIN.iml" filepath="$PROJECT_DIR$/.idea/abbyy_android_JAVA_KOTLIN.iml" />
     </modules>
   </component>
 </project>
