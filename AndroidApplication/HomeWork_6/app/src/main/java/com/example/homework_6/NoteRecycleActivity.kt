@@ -14,19 +14,18 @@ import android.widget.TextView
 import com.example.homework_6.Model.Note
 import com.example.homework_6.Model.NoteRepository
 
-public interface Listener{
-    fun onNoteClick(id: Long)
-}
+class NoteRecycleActivity : AppCompatActivity(), Listener {
 
-class NoteRecycleView : AppCompatActivity(), Listener {
+    private val NOTE_TEXT : String = "TEXT"
+    private val NOTE_IMAGE : String = "IMAGE"
 
     private var repository : NoteRepository? = null
 
     override fun onNoteClick(id: Long) {
         val note = repository!!.getNoteById(id)
         val intent = Intent(this, ShowNoteActivity::class.java)
-        intent.putExtra("TEXT", note.text)
-        intent.putExtra("IMAGE", note.drawableRes)
+        intent.putExtra(NOTE_TEXT, note.text)
+        intent.putExtra(NOTE_IMAGE, note.drawableRes)
         startActivity(intent)
     }
 
@@ -46,41 +45,6 @@ class NoteRecycleView : AppCompatActivity(), Listener {
         recycleView.adapter = adapter
     }
 
-}
-
-class NoteAdapter : RecyclerView.Adapter<NoteViewHolder>() {
-
-    var notesList : List<Note> = listOf()
-
-    var listener : Listener? = null
-
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        var view = inflater.inflate(
-            R.layout.note_view_item,
-            parent,
-            false
-        )
-        return NoteViewHolder(view, listener!!)
-    }
-
-    override fun getItemCount(): Int = notesList.count()
-
-    override fun onBindViewHolder(holder: NoteViewHolder, position: Int) =
-        holder.bind(notesList[position])
-
-}
-
-class NoteViewHolder(itemView : View, val listener : Listener) : RecyclerView.ViewHolder(itemView)
-{
-
-    fun bind (note : Note){
-        itemView.findViewById<TextView>(R.id.noteTextView).text = note.text
-        itemView.findViewById<TextView>(R.id.noteLabelView).text = note.date.toString()
-        itemView.findViewById<ImageView>(R.id.noteImageView).setImageResource(note.drawableRes)
-        itemView.setOnClickListener { v -> listener.onNoteClick(note.id) }
-    }
 }
 
 

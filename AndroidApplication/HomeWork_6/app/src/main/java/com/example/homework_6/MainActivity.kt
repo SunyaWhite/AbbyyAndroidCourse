@@ -13,7 +13,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //findViewById<CardView>(R.id.note).setOnClickListener {v: View? -> onClick(v) }
         findViewById<Button>(R.id.buttonMain).setOnClickListener { v: View? -> onClick(v) }
     }
 
@@ -22,10 +21,9 @@ class MainActivity : AppCompatActivity() {
         when(view?.id)
         {
             R.id.note -> intent = Intent(this, ShowNoteActivity::class.java)
-            R.id.buttonMain -> intent = Intent(this, NoteRecycleView :: class.java)
+            R.id.buttonMain -> intent = Intent(this, NoteRecycleActivity :: class.java)
             else -> throw Exception("No view was found")
         }
-        //error("Button clicked")
         startActivity(intent)
     }
 }

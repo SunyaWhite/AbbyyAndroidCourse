@@ -5,7 +5,7 @@ class MyArrayList<T>(initialCapacity : Int = 10) : IMyList<T>{
     /*
     Our storage
      */
-    private var _values : Array<Any?> = Array(initialCapacity) {_ -> null}
+    private var values : Array<Any?> = Array(initialCapacity) {_ -> null}
 
     /*
     Number of elements in the storage
@@ -18,15 +18,15 @@ class MyArrayList<T>(initialCapacity : Int = 10) : IMyList<T>{
     Display all values of the storage (nulls are included)
      */
     fun display() {
-        _values.forEach { any -> print("${any} ") }
+        values.forEach { any -> print("${any} ") }
         println()
     }
 
     /*
-    Extend the size of the _values
+    Extend the size of the values
      */
     private fun extendSize() : Unit {
-        _values = _values.copyOf(_values.size * 2) // side effect function
+        values = values.copyOf(values.size * 2) // side effect function
     }
 
     /*
@@ -35,14 +35,16 @@ class MyArrayList<T>(initialCapacity : Int = 10) : IMyList<T>{
      ArrayIndexOutOfBoundsException is thrown
      */
     override fun get(index: Int): T =
-            if (count <= index || index < 0) throw ArrayIndexOutOfBoundsException() else _values[index] as T
+            if (count <= index || index < 0) throw ArrayIndexOutOfBoundsException()
+            else values[index] as T
 
     /*
     Get the last element
     If the storage is empty , ArrayIndexOutOfBoundsException is thrown
     */
     override fun get(): T =
-            if (count < 1 ) throw ArrayIndexOutOfBoundsException() else _values[count - 1] as T
+            if (count < 1 ) throw ArrayIndexOutOfBoundsException()
+            else values[count - 1] as T
 
     /*
     Set the element at index position
@@ -51,7 +53,7 @@ class MyArrayList<T>(initialCapacity : Int = 10) : IMyList<T>{
      */
     override fun set(index: Int, newValue: T) {
         if (count <= index || index < 0) throw ArrayIndexOutOfBoundsException()
-        _values[index] = newValue
+        values[index] = newValue
     }
 
     /*
@@ -61,20 +63,20 @@ class MyArrayList<T>(initialCapacity : Int = 10) : IMyList<T>{
      */
     override fun insert(index: Int, newValue: T) {
         if (count < index || index < 0) throw ArrayIndexOutOfBoundsException()
-        if(count + 1> _values.size) extendSize()
+        if(count + 1> values.size) extendSize()
         var prev : Any? = null
-        // function fold with a side effect to _values
-        _values.fold(0){acc, any ->
+        // function fold with a side effect to values
+        values.fold(0){acc, any ->
             if(acc == index)
-                prev = _values[acc]
+                prev = values[acc]
             else if (acc > index) {
-                val temp = _values[acc]
-                _values[acc] = prev
+                val temp = values[acc]
+                values[acc] = prev
                 prev = temp
             }
             acc + 1
         }
-        _values[index] = newValue
+        values[index] = newValue
         count++
     }
 
@@ -82,8 +84,8 @@ class MyArrayList<T>(initialCapacity : Int = 10) : IMyList<T>{
     Add new value to the storage at the last position
      */
     override fun add(newValue: T) {
-        if(count >= _values.size ) extendSize()
-        _values[count++] = newValue
+        if(count >= values.size ) extendSize()
+        values[count++] = newValue
     }
 
     /*
@@ -95,14 +97,14 @@ class MyArrayList<T>(initialCapacity : Int = 10) : IMyList<T>{
     override fun delete(index: Int): T {
         if (count < index || index < 0) throw ArrayIndexOutOfBoundsException()
         var res : T? = null
-        _values.fold(0){acc, any ->
+        values.fold(0){acc, any ->
             if(acc == index)
-                res = _values[acc] as T
+                res = values[acc] as T
             else if (acc > index)
-                _values[acc-1] = _values[acc]
+                values[acc-1] = values[acc]
             acc + 1
         }
-        _values[--count] = null
+        values[--count] = null
         return res!!
     }
 

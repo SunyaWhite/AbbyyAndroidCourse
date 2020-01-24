@@ -28,9 +28,9 @@ public class Main {
 
         var random = new Random();
 
-        for(int row = 0; row < 6; row++)
+        for(int row = 0; row < matrix.size(); row++)
         {
-            for(int col = 0; col < 7; col++)
+            for(int col = 0; col < matrix[row].size(); col++)
             {
                 matrix[row][col] = random.nextInt(10);
             }
@@ -38,10 +38,10 @@ public class Main {
 
         Display(matrix);
 
-        for(int row = 0; row < 6; row++)
+        for(int row = 0; row < matrix.size(); row++)
         {
             int max = 0;
-            for(int col = 1; col < 7; col++)
+            for(int col = 1; col < matrix[row].size(); col++)
             {
                 max  = (matrix[row][max] < matrix[row][col]) ? col : max;
             }

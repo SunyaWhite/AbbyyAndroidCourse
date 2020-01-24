@@ -1,0 +1,20 @@
+package com.example.homework_6.Model
+
+import io.realm.RealmModel
+import io.realm.annotations.PrimaryKey
+import io.realm.annotations.RealmClass
+import java.util.*
+
+@RealmClass
+open class Note (
+    @PrimaryKey
+    var Id : Long = 0, //String = UUID.randomUUID().toString(),
+    var Date : Date = Date(),
+    var Text : String = "",
+    var DrawableRes : Int = 0) :
+    RealmModel {
+
+    override fun toString(): String {
+        return "Note Id : ${Id} | Note Date : ${Date.toString()}"
+    }
+}

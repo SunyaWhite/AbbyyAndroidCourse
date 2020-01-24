@@ -11,6 +11,6 @@ class ShowNoteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_note)
         findViewById<TextView>(R.id.fullText).text = intent.extras!!["TEXT"] as String
-        findViewById<ImageView>(R.id.imageView2).setImageResource(intent.extras!!["IMAGE"] as Int)
+        findViewById<ImageView>(R.id.imageView).setImageResource(intent.extras!!["IMAGE"] as Int)
     }
 }
