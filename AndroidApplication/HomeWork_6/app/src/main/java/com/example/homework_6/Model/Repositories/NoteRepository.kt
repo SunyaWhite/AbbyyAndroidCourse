@@ -12,7 +12,7 @@ import java.lang.Exception
 import java.util.*
 import kotlin.random.Random
 
-internal class NoteRepository(context: Context) : INoteRepository {
+internal class NoteRepository(val context: Context) : INoteRepository {
 
     private val config : RealmConfiguration
     private val realm : Realm
@@ -21,6 +21,7 @@ internal class NoteRepository(context: Context) : INoteRepository {
         Realm.init(context)
         config = RealmConfig.provideDefaultConfiguration()
         realm = Realm.getInstance(config)
+        generateSampleData()
     }
 
     override fun getAllNotes(): List<Note>? =
@@ -62,21 +63,21 @@ internal class NoteRepository(context: Context) : INoteRepository {
         }
     }
 
-    /*private var _notes : MutableList<Note> = mutableListOf()
 
-    init {
+    private fun generateSampleData() {
 
-        var elems = context.assets.open("notes.txt")
+        if(realm.where<Note>().count() != 0L)
+            return
+
+        context.assets.open("notes.txt")
             .bufferedReader()
             .readText().split("\n\n")
             .fold(0L) { acc, s ->
                 if(s == "")
                     acc
-                _notes.add(Note(acc, generateRandomDate(), s, selectDrawable( acc % 4 + 1)))
+                this.addNewNote(Note(acc, generateRandomDate(), s, selectDrawable( acc % 4 + 1)))
                 acc + 1
             }
-        /*_notes.add(Note(1, generateRandomDate(), "Some random text", 1))
-        _notes.add(Note(2, generateRandomDate(), "Some random text 2", 1))*/
     }
 
     private fun generateRandomDate() : Date=
@@ -91,9 +92,5 @@ internal class NoteRepository(context: Context) : INoteRepository {
             4L -> R.drawable.cat4
             else -> R.drawable.ic_launcher_foreground
         }
-
-    fun getAllNotes() = _notes.toList()
-
-    fun getNoteById(id : Long) : Note = _notes.first { note -> note.id == id }*/
 
 }

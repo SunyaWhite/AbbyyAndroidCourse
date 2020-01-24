@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import androidx.cardview.widget.CardView
 import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         val intent : Intent
         when(view?.id)
         {
-            R.id.note -> intent = Intent(this, ShowNoteActivity::class.java)
+            //R.id.note -> intent = Intent(this, ShowNoteActivity::class.java)
             R.id.buttonMain -> intent = Intent(this, NoteRecycleActivity :: class.java)
             else -> throw Exception("No view was found")
         }

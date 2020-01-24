@@ -1,6 +1,5 @@
 package com.example.homework_6
 
-import NoteViewHolder
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

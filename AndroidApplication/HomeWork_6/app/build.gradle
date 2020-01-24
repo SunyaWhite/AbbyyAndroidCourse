@@ -28,7 +28,7 @@ android {
     }
     sourceSets {
         main {
-            java.srcDirs = ['src/main/java', 'src/main/java/com/example/homework_6/Model/Entities', 'src/main/java/com/example/homework_6/Repositories', 'src/main/java/com/example/homework_6/Model/Repositories', 'src/main/java/com/example/homework_6/Model/IRepositories', 'src/main/java/com/example/homework_6/Model/RealmModules', 'src/main/java/com/example/homework_6/Dagger/DaggerModules', 'src/main/java/com/example/homework_6/Dagger/DaggerComponents']
+            java.srcDirs = ['src/main/java', 'src/main/java/com/example/homework_6/Model/Entities', 'src/main/java/com/example/homework_6/Repositories', 'src/main/java/com/example/homework_6/Model/Repositories', 'src/main/java/com/example/homework_6/Model/IRepositories', 'src/main/java/com/example/homework_6/Model/RealmModules', 'src/main/java/com/example/homework_6/Dagger/DaggerModules', 'src/main/java/com/example/homework_6/Dagger/DaggerComponents', 'src/main/java/com/example/homework_6/View', 'src/main/java/com/example/homework_6/View/RecycleView']
         }
     }
 }
