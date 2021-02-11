@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="main_activity_note_label">
+        Some Great Note
+    </string>
+
+    <string name="main_activity_note_text">
+        Lose away off why half led have near bed. At engage simple father of period others except.
+    </string>
+
+    <string name="show_note_activity_full_text">
+        Curabitur pretium tincidunt lacus. Nulla gravida orci a odio.
+        Nullam varius, turpis et commodo pharetra, est eros bibendum elit,
+        nec luctus magna felis sollicitudin mauris.
+        Integer in mauris eu nibh euismod gravida.
+        Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam tempor.
+    </string>
+</resources>

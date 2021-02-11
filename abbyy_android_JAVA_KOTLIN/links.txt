@@ -1,0 +1,7 @@
+https://www.dotnetcurry.com/patterns-practices/1483/parallel-workflow-dotnet-tpl-dataflow
+https://csharp.programmingpedia.net/en/tutorial/3110/task-parallel-library-tpl-dataflow-constructs#transformblock%3Ctinput,-toutput%3E
+https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/dataflow-task-parallel-library
+https://www.tutorialsteacher.com/csharp/csharp-stream-io
+https://docs.microsoft.com/en-us/dotnet/api/system.io.stream?view=netframework-4.8
+https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.dataflow.executiondataflowblockoptions?view=netcore-2.2
+
